@@ -1,0 +1,47 @@
+REPORT ZHITDENEME2.
+tables : ZHT_MAGAZA.
+DATA GR_SALV_TABLE TYPE REF TO CL_SALV_TABLE.
+PARAMETERS p_mano type ZHT_MAGAZA-zmano. "MATCHCODE OBJECT ZMAGASA_SH.
+SELECT-OPTIONS: sa_mano for ZHT_MAGAZA-zmano." MATCHCODE OBJECT ZMAGASA_SH.
+DATA : BEGIN OF GS_DATA,
+  ZMANO TYPE ZMON_D,
+  ZTOP TYPE ZTOP_D,
+  ZSAN TYPE ZSAN_D,
+  ZTOPS TYPE ZTOPS_D,
+  ZSANS TYPE ZSANS_D,
+  END OF GS_DATA.
+
+  DATA GT_DATA LIKE TABLE OF GS_DATA.
+
+  SELECT ZHT_MAGAZA~ZMANO ZTOP ZSAN ZTOPS ZSANS FROM ZHT_MAGAZA
+    INNER JOIN ZHT_DEPO ON ZHT_DEPO~ZMANO = ZHT_MAGAZA~ZMANO
+    INTO TABLE GT_DATA
+    WHERE ZHT_MAGAZA~zmano eq p_mano.
+
+  SELECT ZHT_MAGAZA~ZMANO ZTOP ZSAN ZTOPS ZSANS FROM ZHT_MAGAZA
+    INNER JOIN ZHT_DEPO ON ZHT_DEPO~ZMANO = ZHT_MAGAZA~ZMANO
+    INTO TABLE GT_DATA
+
+    WHERE ZHT_MAGAZA~zmano in sa_mano.
+    CL_SALV_TABLE=>FACTORY(
+      exporting
+        LIST_DISPLAY   = IF_SALV_C_BOOL_SAP=>FALSE    " ALV Displayed in List Mode
+*        R_CONTAINER    =     " Abstract Container for GUI Controls
+*        CONTAINER_NAME =
+      importing
+        R_SALV_TABLE   =  GR_SALV_TABLE   " Basis Class Simple ALV Tables
+      changing
+        T_TABLE        = GT_DATA
+    ).
+*      catch CX_SALV_MSG.    "
+
+*    GR_SALV_TABLE->SET_SCREEN_STATUS(
+*      exporting
+*        REPORT        =  'ZHITDENEME2'   " ABAP Program: Current Main Program
+*        PFSTATUS      =   'STATUS'  " Screens, Current GUI Status
+**        SET_FUNCTIONS =     " ALV: Data Element for Constants
+*    ).
+*perform user_comand USING i_ucomm.
+
+
+    GR_SALV_TABLE->DISPLAY( ).
