@@ -14,3 +14,15 @@ Create the layout for screen
 7)Enter text boxes(for display purpose only can give any name) . Then enter input/output boxes(use the name of the box the same as used in the User_COMMAND_1000(PAI module)). Then enter push buttons give name like change, create and display but remember to give FCTCODE as given in the PBO module STATUS_1000.
 8)Create transaction using the same name as used in PBO module give program name(ztest_prog main module program) and screen number (1000)while creating the transaction and check all three boxes for GUI support (HTML, java and windows). Create all three transactions
 9)Finally activate everything by right clicking on the module and then execute the program by writing the transaction name in the command box for example( /oztest_create2)
+
+---
+
+## Contributors
+- Hilal Turfullu <turfullu.hilal@gmail.com>
+
+---
+
+## License & Copyright
+© Hilal Turfullu
+
+Licensed under the [MIT LICENSE](LICENSE).
