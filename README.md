@@ -15,6 +15,18 @@ Create the layout for screen
 8)Create transaction using the same name as used in PBO module give program name(ztest_prog main module program) and screen number (1000)while creating the transaction and check all three boxes for GUI support (HTML, java and windows). Create all three transactions
 9)Finally activate everything by right clicking on the module and then execute the program by writing the transaction name in the command box for example( /oztest_create2)
 
+Tables and contents:
+Table.1 : Registration number, password, admin chooser, name, last name, birth date
+Table.2 : Student number, course code, letter grade
+Table.3 : Letter grade, minimum value, maximum value (To convert a grade out of 100 into a letter grade)
+Table.4 : Course code, course description (When the course code is clicked with Search Help, the correct course can be verified.)
+
+Screens:
+Screen.1 : Registration number to enter the grade screen regardless of student or teacher-password verification, back, exit and save buttons
+Screen.2 : The teacher can change the letter grade if the letter grade of the student is entered, if not, the lecture grade can be entered a value out of 100.
+           If the student enters the system successfully, she/he can see the letter grade of the course.
+
+
 ---
 
 ## Contributors
